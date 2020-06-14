@@ -1,6 +1,3 @@
-.PHONY: activate
-activate:
-	( \
-           source /pun-run/bin/activate; \
-           pip install -r requirements.txt; \
-	)
+.PHONY: run-dev-db
+run-dev-db:
+	docker-compose up -d dev-database
