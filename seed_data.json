@@ -1,0 +1,22 @@
+[
+{
+  "model": "api.punter",
+  "fields": {
+    "name": "Michael B. Jordan"
+  }
+},
+{
+  "model": "api.punter",
+  "fields": {
+    "name": "Sylvester Stallone"
+  }
+},
+{
+  "model": "api.pun",
+  "fields": {
+    "pun": "punny",
+    "punter": 1,
+    "timestamp": "2020-06-16 07:04:30.943811"
+  }
+}
+]
