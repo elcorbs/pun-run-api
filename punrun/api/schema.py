@@ -2,18 +2,28 @@ import graphene
 from graphene_django.types import DjangoObjectType, ObjectType
 from punrun.api.models import Punter, Pun, Run
 from datetime import datetime
-
-class PunterType(DjangoObjectType):
-  class Meta:
-    model = Punter
+import json
 
 class PunType(DjangoObjectType):
   class Meta:
     model = Pun
 
+class PunterType(DjangoObjectType):
+  puns = graphene.List(PunType)
+  class Meta:
+    model = Punter
+  @staticmethod
+  def resolve_puns(root, info, **kwargs):
+    return Pun.objects.filter(punter_id=root.id)
+
 class RunType(DjangoObjectType):
+  puns = graphene.List(PunType)
   class Meta:
     model = Run
+
+  @staticmethod
+  def resolve_puns(root, info, **kwargs):
+    return Pun.objects.filter(run_id=root.id)
 
 class PunterInput(graphene.InputObjectType):
   name = graphene.String()
