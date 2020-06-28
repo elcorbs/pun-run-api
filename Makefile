@@ -14,3 +14,7 @@ restart-dev-db: |
 .PHONY: migrate-database
 migrate-database: |
 	pipenv run python manage.py migrate
+
+.PHONY: serve
+serve:
+	pipenv run python manage.py runserver
